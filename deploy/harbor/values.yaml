@@ -1,0 +1,92 @@
+expose:
+  type: clusterIP
+  tls:
+    enabled: false
+
+externalURL: http://localhost:8080
+
+harborAdminPassword: Harbor12345
+
+persistence:
+  enabled: true
+  resourcePolicy: "keep"
+  persistentVolumeClaim:
+    registry:
+      size: 10Gi
+      storageClass: ""
+    jobservice:
+      size: 1Gi
+      storageClass: ""
+    database:
+      size: 1Gi
+      storageClass: ""
+    redis:
+      size: 1Gi
+      storageClass: ""
+
+trivy:
+  enabled: false
+
+notary:
+  enabled: false
+
+portal:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 256Mi
+
+core:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+
+jobservice:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 256Mi
+
+registry:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+
+database:
+  type: internal
+  internal:
+    resources:
+      requests:
+        cpu: 50m
+        memory: 256Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi
+
+redis:
+  type: internal
+  internal:
+    resources:
+      requests:
+        cpu: 25m
+        memory: 64Mi
+      limits:
+        cpu: 200m
+        memory: 256Mi
+
+metrics:
+  enabled: false
