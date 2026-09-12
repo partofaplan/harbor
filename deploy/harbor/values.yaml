@@ -1,9 +1,18 @@
 expose:
-  type: clusterIP
+  type: ingress
   tls:
     enabled: false
+  ingress:
+    hosts:
+      core: harbor.here
+    controller: default
+    className: traefik
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: web
+      ingress.kubernetes.io/ssl-redirect: "false"
+      ingress.kubernetes.io/proxy-body-size: "0"
 
-externalURL: http://localhost:8080
+externalURL: http://harbor.here
 
 harborAdminPassword: Harbor12345
 

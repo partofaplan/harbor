@@ -36,7 +36,11 @@ The verification script checks that Harbor pods are Ready, the service is availa
 
 ## Access
 
-After deployment, the UI can be accessed through a local port-forward:
+The chart is configured to expose Harbor through the cluster ingress at:
+
+- http://harbor.here/
+
+If you need a direct local port-forward as a fallback:
 
 ```bash
 kubectl -n harbor port-forward svc/harbor 8080:80
@@ -46,7 +50,7 @@ Then open:
 
 - http://localhost:8080/
 - Username: `admin`
-- Password: use the generated admin password from the secret if you did not override it
+- Password: `Harbor12345`
 
 ## Customization
 
